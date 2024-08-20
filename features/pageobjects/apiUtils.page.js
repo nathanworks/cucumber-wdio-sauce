@@ -4,7 +4,7 @@ class ApiUtils {
   constructor() {
     this.baseUrl = "https://gorest.co.in/public-api/users";
     this.token =
-      "4a693cb82de363f1a95121c610897e1b9725c89d02f4d9bd00c6d5cb5600f018";
+      "d4701b4e14e582234f20221b15d4e0e604bc5c99111b6f5fbc9558dc4bed50ff";
   }
 
   async createUser(name, email, gender, status) {

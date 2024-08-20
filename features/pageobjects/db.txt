@@ -1,0 +1,40 @@
+const mysql = require("mysql2/promise");
+
+let pool;
+
+async function initPool() {
+  if (!pool) {
+    pool = mysql.createPool({
+      host: "127.0.0.1",
+      user: "root",
+      password: "root",
+      database: "users",
+    });
+    console.log("Database pool initialized.");
+  }
+}
+
+async function getCredentials(id) {
+  if (!pool) {
+    throw new Error("Database pool is not initialized.");
+  }
+  const [rows] = await pool.query(
+    "SELECT username, password FROM user WHERE id = ?",
+    [id]
+  );
+  return rows[0];
+}
+
+async function closePool() {
+  if (pool) {
+    await pool.end();
+    pool = null;
+    console.log("Database pool closed.");
+  }
+}
+
+module.exports = {
+  initPool,
+  getCredentials,
+  closePool,
+};

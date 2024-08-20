@@ -1,0 +1,7 @@
+Feature: Login with Database
+
+  Scenario: User login with valid credentials
+    Given the user is on login page
+    When the user input valid credential
+    And the user click Login button
+    Then the user should be redirect to product page

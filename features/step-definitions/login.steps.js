@@ -3,6 +3,7 @@ const { expect, $ } = require('@wdio/globals')
 
 const LoginPage = require('../pageobjects/login.page');
 const ProductPage = require('../pageobjects/product.page');
+// const { getCredentials } = require("../pageobjects/db.page");
 
 Given(/^the user is on login page$/, async () => {
   await LoginPage.open()
@@ -16,9 +17,21 @@ When(
 );
 
 
+// When(/^the user input valid credential$/, async() => {
+//   const credential = await getCredentials(1);
+//   await LoginPage.login(credential.username, credential.password);
+// });
+
+
 When(/^the user click Login button$/, async() => {
   await LoginPage.clickLogin()
 });
+
+
+// Then(/^the user should be redirect to product page$/, async() => {
+//   const productcTitleDisplayed = await ProductPage.productTitle.isDisplayed();
+//   expect(productcTitleDisplayed).toBe(true);
+// });
 
 
 Then(

@@ -1,0 +1,10 @@
+const { Before, After } = require("@cucumber/cucumber");
+const db = require("./db.page");
+
+Before(async function () {
+  await db.initPool();
+});
+
+After(async function () {
+  await db.closePool();
+});
